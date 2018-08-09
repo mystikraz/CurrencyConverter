@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import Logo from '../components/Logo';
 import Container from '../components/Container';
-import InputWithButton from '../components/Logo/TextInput';
+import InputWithButton from '../components/TextInput';
 
 // export default () => (
 //     <Container>
@@ -12,19 +12,39 @@ import InputWithButton from '../components/Logo/TextInput';
 
 
 // );
-const Home = () => {
-    <View>
-        <Logo />
-        <InputWithButton
-            buttonText={}
-            onPress={}
-        />
-        <InputWithButton
-            buttonText={}
-            onPress={}
-            editable={false}
-        />
-    </View>
+
+const TEMP_BASE_CURRENCY = 'USD';
+const TEMP_QUOTE_CURRENCY = 'GBP';
+const TEMP_BASE_PRICE = '100';
+const TEMP_qUOTE_PRICE = '79.5';
+
+class Home extends Component {
+    handlePressBaseCurrency = () => {
+        console.log('press base');
+    }
+    handlePressQuoteCurrency = () => {
+        console.log('press quote');
+    }
+    render() {
+        return (
+            <Container>
+                <StatusBar translucent={false} barStyle="light-content" />
+                <Logo />
+                <InputWithButton
+                    buttonText={TEMP_BASE_CURRENCY}
+                    onPress={this.handlePressBaseCurrency}
+                />
+                <InputWithButton
+                    buttonText={TEMP_QUOTE_CURRENCY}
+                    onPress={this.handlePressQuoteCurrency}
+                    editable={false}
+                />
+
+
+            </Container>
+        );
+    };
+
 }
 
 export default Home;
