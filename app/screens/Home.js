@@ -4,7 +4,8 @@ import Logo from '../components/Logo';
 import Container from '../components/Container';
 import InputWithButton from '../components/TextInput';
 import ClearButton from '../components/Buttons';
-
+import LastConverted from '../components/Text';
+import Header from '../components/Header'
 // export default () => (
 //     <Container>
 //         <StatusBar translucent={false} barStyle="light-content" />
@@ -18,7 +19,8 @@ const TEMP_BASE_CURRENCY = 'USD';
 const TEMP_QUOTE_CURRENCY = 'GBP';
 const TEMP_BASE_PRICE = '100';
 const TEMP_QUOTE_PRICE = '79.5';
-
+const TEMP_CONVERSION_RATE = 0.7974;
+const TEMP_CONVERSION_DATE = new Date();
 
 class Home extends Component {
     handlePressBaseCurrency = () => {
@@ -33,10 +35,14 @@ class Home extends Component {
     handleSwapCurrency = () => {
         console.log('handle swap currency');
     };
+    handleOptionsPress = () => {
+        console.log('options pressed');
+    }
     render() {
         return (
             <Container>
                 <StatusBar translucent={false} barStyle="light-content" />
+                <Header onPress={this.handleOptionsPress} />
                 <Logo />
                 <InputWithButton
                     buttonText={TEMP_BASE_CURRENCY}
@@ -51,7 +57,11 @@ class Home extends Component {
                     editable={false}
                     value={TEMP_QUOTE_PRICE}
                 />
-
+                <LastConverted
+                    base={TEMP_BASE_CURRENCY}
+                    quote={TEMP_QUOTE_CURRENCY}
+                    conversionRate={TEMP_CONVERSION_RATE}
+                />
                 <ClearButton onPress={this.handleSwapCurrency} text="Reverse Currencies" />
             </Container>
         );
